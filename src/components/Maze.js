@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import '../util/array';
 
 const mapStateToProps = state => {
     return {maze: state.maze};
@@ -14,9 +15,30 @@ class Maze extends Component {
             return null;
         }
 
+        const width = maze.size[0];
+        const rows = maze.data.chunk(width);
+
+        let objectLocations = {};
+        objectLocations[maze['pony']] = 'pony';
+        objectLocations[maze['domokun']] = 'domokun';
+        objectLocations[maze['end-point']] = 'end-point';
+
         return (
             <div className="maze">
-                {JSON.stringify(maze)}
+                {rows.map((cells, i) => {
+                    return (
+                        <div className="row" key={i}>
+                            {cells.map((cell, y) => {
+                                const key = i * width + y;
+                                const object = objectLocations[key] ? `object__${objectLocations[key]}` : '';
+
+                                return (
+                                    <div className={`cell ${cell.join(' ')} ${object}`} key={key}/>
+                                )
+                            })}
+                        </div>
+                    )
+                })}
             </div>
         )
     }

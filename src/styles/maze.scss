@@ -1,0 +1,48 @@
+.maze {
+  width: 450px;
+  height: 750px;
+  border-right: 7px solid #fff;
+  border-bottom: 7px solid #fff;
+  box-sizing: border-box;
+
+  .row {
+    display: flex;
+
+    .cell {
+      width: 30px;
+      height: 30px;
+      box-sizing: border-box;
+      position: relative;
+
+      &.north {
+        border-top: 7px solid #fff;
+      }
+
+      &.west {
+        border-left: 7px solid #fff;
+      }
+
+      &.object {
+        &::after {
+          position: absolute;
+          top: -2px;
+          text-align: center;
+          font-size: 1.2em;
+          z-index: 1;
+        }
+
+        &__end-point::after {
+          content: '\1F6AA';
+        }
+
+        &__domokun::after {
+          content: '\1F344'
+        }
+
+        &__pony::after {
+          content: '\1F33C'
+        }
+      }
+    }
+  }
+}
