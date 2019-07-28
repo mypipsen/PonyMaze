@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
+import Maze from './Maze';
 
-function App() {
-    return (
-        <div className="app">
-            Pony maze goes here
-        </div>
-    );
+class App extends Component {
+
+    render() {
+        return (
+            <div className="app">
+                <Maze/>
+            </div>
+        );
+    }
 }
 
 export default App;
