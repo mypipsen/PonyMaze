@@ -58,13 +58,13 @@ class Maze extends Component {
             <div className="maze">
                 {rows.map((cells, i) => {
                     return (
-                        <div className="row" key={i}>
+                        <div className="maze-row" key={i}>
                             {cells.map((cell, y) => {
                                 const key = i * width + y;
                                 const object = objectLocations[key] ? `object__${objectLocations[key]}` : '';
 
                                 return (
-                                    <div className={`cell ${cell.join(' ')} ${object}`} key={key}/>
+                                    <div className={`maze-cell ${cell.join(' ')} ${object}`} key={key}/>
                                 )
                             })}
                         </div>

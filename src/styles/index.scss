@@ -9,4 +9,6 @@ body {
   color: #ffffff;
 }
 
+@import '~bootstrap/dist/css/bootstrap.min.css';
 @import 'styles/maze';
+@import 'styles/notification';

@@ -7,6 +7,14 @@ const mapStateToProps = state => {
 
 class Notification extends Component {
 
+    get className() {
+        if (this.props.error === 'You won. Game ended') {
+            return 'alert-success';
+        }
+
+        return 'alert-danger';
+    }
+
     render() {
         const {error} = this.props;
 
@@ -15,8 +23,12 @@ class Notification extends Component {
         }
 
         return (
-            <div className="error">
-                {error}
+            <div className="notification toast show">
+                <div className="toast-header text-center m-0 p-0">
+                    <div className={`alert m-0 ${this.className}`}>
+                        {error}
+                    </div>
+                </div>
             </div>
         )
     }

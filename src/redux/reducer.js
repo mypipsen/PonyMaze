@@ -25,7 +25,6 @@ export default function reducer(state = defaultState, action) {
         case FETCH_MAZE_SUCCESS:
             return {
                 ...state,
-                error: null,
                 maze: action.payload
             };
 

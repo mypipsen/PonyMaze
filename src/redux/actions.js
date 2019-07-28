@@ -60,6 +60,7 @@ export function createMaze(params) {
                 cookie.set('mazes', JSON.stringify(mazes));
 
                 dispatch({type: CREATE_MAZE_SUCCESS, payload: id});
+                dispatch(fetchMaze(id));
             })
             .catch(err => {
                 dispatch({type: CREATE_MAZE_FAILURE, payload: err.response.data});
@@ -73,11 +74,11 @@ export function movePony(id, direction) {
             .move(id, direction)
             .then(() => {
                 dispatch({type: MOVE_SUCCESS, payload: id});
-
                 dispatch(fetchMaze(id));
             })
             .catch(err => {
                 dispatch({type: MOVE_FAILURE, payload: err.response.data});
+                dispatch(fetchMaze(id));
             });
     }
 }
