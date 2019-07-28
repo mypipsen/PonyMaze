@@ -5,6 +5,13 @@ Bootstrapped with [Create React App](https://github.com/facebook/create-react-ap
 ## How to play
 The app is hosted [here](https://pony.secret.fish). Move the pony with WASD like the true gamer I know you are.
 
+## Installation
+```
+npm i
+cp .env.example .env
+npm run start
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
