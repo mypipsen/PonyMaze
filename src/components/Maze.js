@@ -1,31 +1,25 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import MazeForm from './MazeForm';
-import {getIdFromCookie} from '../redux/actions';
 
 const mapStateToProps = state => {
-    return {maze_id: state.maze_id};
+    return {maze: state.maze};
 };
 
 class Maze extends Component {
 
-    componentDidMount() {
-        this.props.getIdFromCookie();
-    }
-
     render() {
-        const {maze_id} = this.props;
+        const {maze} = this.props;
 
-        if (maze_id === null) {
-            return (
-                <MazeForm/>
-            );
+        if (!maze) {
+            return null;
         }
 
         return (
-            <div>{JSON.stringify(maze_id)}</div>
+            <div className="maze">
+                {JSON.stringify(maze)}
+            </div>
         )
     }
 }
 
-export default connect(mapStateToProps, {getIdFromCookie})(Maze);
+export default connect(mapStateToProps)(Maze);

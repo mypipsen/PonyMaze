@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import PonyApi from '../api/PonyApi';
+import {connect} from 'react-redux';
+import {createMaze} from '../redux/actions'
 
 class MazeForm extends Component {
 
@@ -7,31 +8,18 @@ class MazeForm extends Component {
         super(props);
 
         this.state = {
-            name: '',
-            error: null,
+            name: ''
         };
     }
 
     submit(e) {
         e.preventDefault();
 
-        const payload = {
+        this.props.createMaze({
             'maze-width': 15,
             'maze-height': 25,
             'maze-player-name': this.state.name,
             'difficulty': 5
-        };
-
-        this.setState({error: null}, () => {
-            PonyApi
-                .create(payload)
-                .catch(err => {
-                    if (err.response && err.response.data) {
-                        err = err.response.data;
-                    }
-
-                    this.setState({error: err})
-                });
         });
     }
 
@@ -48,12 +36,9 @@ class MazeForm extends Component {
                 <div className="form-group row">
                     <button type="submit" className="btn btn-primary">Create</button>
                 </div>
-                <div className="error">
-                    {this.state.error}
-                </div>
             </form>
         )
     }
 }
 
-export default MazeForm;
+export default connect(null, {createMaze})(MazeForm);

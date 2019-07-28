@@ -1,14 +1,44 @@
+import {FETCH_MAZES, FETCH_MAZE_SUCCESS, FETCH_MAZE_FAILURE, CREATE_MAZE_SUCCESS, CREATE_MAZE_FAILURE} from './types';
+
 const defaultState = {
-    maze_id: null
+    mazes: [],
+    maze: null,
 };
 
 export default function reducer(state = defaultState, action) {
     switch (action.type) {
 
-        case 'maze_created':
-            return Object.assign({}, state, {
-                maze_id: action.payload
-            });
+        case FETCH_MAZES:
+            return {
+                ...state,
+                mazes: action.payload
+            };
+
+        case FETCH_MAZE_SUCCESS:
+            return {
+                ...state,
+                error: null,
+                maze: action.payload
+            };
+
+        case FETCH_MAZE_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+            };
+
+        case CREATE_MAZE_SUCCESS:
+            return {
+                ...state,
+                error: null,
+                mazes: [action.payload, ...state.mazes]
+            };
+
+        case CREATE_MAZE_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+            };
 
         default:
             return state;

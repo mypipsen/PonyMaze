@@ -1,18 +1,60 @@
+import {FETCH_MAZES, FETCH_MAZE_SUCCESS, FETCH_MAZE_FAILURE, CREATE_MAZE_SUCCESS, CREATE_MAZE_FAILURE} from './types';
 import cookie from '../util/cookie';
+import ponyApi from '../api/ponyApi';
 
-export function create(maze_id) {
-    return (dispatch) => {
-        cookie.set('maze_id', maze_id);
-        dispatch({type: 'maze_created', payload: maze_id});
+function getMazesFromCookie() {
+    let mazes = cookie.get('mazes');
+
+    if (typeof mazes === 'undefined') {
+        return [];
+    }
+
+    try {
+        mazes = JSON.parse(mazes);
+
+        if (!Array.isArray(mazes)) {
+            return [];
+        }
+
+        return mazes;
+    } catch (err) {
+        return [];
     }
 }
 
-export function getIdFromCookie() {
+export function fetchMazes() {
     return (dispatch) => {
-        const maze = cookie.get('maze_id');
+        const mazes = getMazesFromCookie();
+        dispatch({type: FETCH_MAZES, payload: mazes});
+    }
+}
 
-        if (typeof maze !== 'undefined') {
-            dispatch({type: 'maze_created', payload: maze});
-        }
+export function fetchMaze(id) {
+    return (dispatch) => {
+        ponyApi
+            .fetch(id)
+            .then(data => {
+                dispatch({type: FETCH_MAZE_SUCCESS, payload: data});
+            })
+            .catch(err => {
+                dispatch({type: FETCH_MAZE_FAILURE, payload: err.response.data});
+            });
+    }
+}
+
+export function createMaze(params) {
+    return (dispatch) => {
+        ponyApi
+            .create(params)
+            .then(id => {
+                const mazes = getMazesFromCookie();
+                mazes.push(id);
+                cookie.set('mazes', JSON.stringify(mazes));
+
+                dispatch({type: CREATE_MAZE_SUCCESS, payload: id});
+            })
+            .catch(err => {
+                dispatch({type: CREATE_MAZE_FAILURE, payload: err.response.data});
+            });
     }
 }
