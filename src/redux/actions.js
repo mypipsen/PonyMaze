@@ -1,6 +1,14 @@
-import {FETCH_MAZES, FETCH_MAZE_SUCCESS, FETCH_MAZE_FAILURE, CREATE_MAZE_SUCCESS, CREATE_MAZE_FAILURE} from './types';
 import cookie from '../util/cookie';
 import ponyApi from '../api/ponyApi';
+import {
+    FETCH_MAZES,
+    FETCH_MAZE_SUCCESS,
+    FETCH_MAZE_FAILURE,
+    CREATE_MAZE_SUCCESS,
+    CREATE_MAZE_FAILURE,
+    MOVE_SUCCESS,
+    MOVE_FAILURE,
+} from './types';
 
 function getMazesFromCookie() {
     let mazes = cookie.get('mazes');
@@ -55,6 +63,21 @@ export function createMaze(params) {
             })
             .catch(err => {
                 dispatch({type: CREATE_MAZE_FAILURE, payload: err.response.data});
+            });
+    }
+}
+
+export function movePony(id, direction) {
+    return (dispatch) => {
+        ponyApi
+            .move(id, direction)
+            .then(() => {
+                dispatch({type: MOVE_SUCCESS, payload: id});
+
+                dispatch(fetchMaze(id));
+            })
+            .catch(err => {
+                dispatch({type: MOVE_FAILURE, payload: err.response.data});
             });
     }
 }

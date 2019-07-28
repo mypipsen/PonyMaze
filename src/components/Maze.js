@@ -1,12 +1,43 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import '../util/array';
+import {movePony} from '../redux/actions';
 
 const mapStateToProps = state => {
     return {maze: state.maze};
 };
 
 class Maze extends Component {
+
+    componentDidMount() {
+        window.addEventListener('keyup', (e) => this.onKeyUp(e), false);
+    }
+
+    onKeyUp(e) {
+        const keyCode = e.keyCode;
+        let direction;
+
+        switch (keyCode) {
+            case 87: // W
+                direction = 'north';
+                break;
+            case 65: // A
+                direction = 'west';
+                break;
+            case 83: // S
+                direction = 'south';
+                break;
+            case 68: // D
+                direction = 'east';
+                break;
+            default:
+                direction = null;
+        }
+
+        if (direction) {
+            this.props.movePony(this.props.maze.maze_id, direction);
+        }
+    }
 
     render() {
         const {maze} = this.props;
@@ -40,8 +71,8 @@ class Maze extends Component {
                     )
                 })}
             </div>
-        )
+        );
     }
 }
 
-export default connect(mapStateToProps)(Maze);
+export default connect(mapStateToProps, {movePony})(Maze);

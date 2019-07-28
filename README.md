@@ -1,8 +1,6 @@
-#ponymaze
-
-One solution for TrustPilot's code challenge.
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Pony Maze
+A solution for [TrustPilot's Pony challenge](https://ponychallenge.trustpilot.com/api-docs/index.html).
+Bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Using Redux, Axios and Sass.
 
 ## Available Scripts
 

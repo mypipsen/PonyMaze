@@ -1,4 +1,12 @@
-import {FETCH_MAZES, FETCH_MAZE_SUCCESS, FETCH_MAZE_FAILURE, CREATE_MAZE_SUCCESS, CREATE_MAZE_FAILURE} from './types';
+import {
+    FETCH_MAZES,
+    FETCH_MAZE_SUCCESS,
+    FETCH_MAZE_FAILURE,
+    CREATE_MAZE_SUCCESS,
+    CREATE_MAZE_FAILURE,
+    MOVE_SUCCESS,
+    MOVE_FAILURE,
+} from './types';
 
 const defaultState = {
     mazes: [],
@@ -35,6 +43,18 @@ export default function reducer(state = defaultState, action) {
             };
 
         case CREATE_MAZE_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+            };
+
+        case MOVE_SUCCESS:
+            return {
+                ...state,
+                error: null,
+            };
+
+        case MOVE_FAILURE:
             return {
                 ...state,
                 error: action.payload,

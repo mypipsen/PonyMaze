@@ -22,6 +22,21 @@ export default {
                 .then(response => resolve(response.data))
                 .catch(err => reject(err));
         });
-    }
+    },
+
+    move(id, direction) {
+        return new Promise((resolve, reject) => {
+            axios
+                .post(`${baseUrl}/maze/${id}`, {direction: direction})
+                .then(response => {
+                    if (response.status === 200 && response.data['state-result'] === 'Move accepted') {
+                        resolve(response.data);
+                    } else {
+                        reject({response: {data: response.data['state-result']}})
+                    }
+                })
+                .catch(err => reject(err));
+        });
+    },
 
 }
