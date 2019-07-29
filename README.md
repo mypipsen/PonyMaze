@@ -3,7 +3,7 @@ A solution for [TrustPilot's Pony Challenge](https://ponychallenge.trustpilot.co
 Bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Using Redux, Axios, Sass and Bootstrap (for quick and easy styling). Styling is not responsive as the app is intended for desktop resolutions.
 
 ## How to play
-The app is hosted [here](https://pony.secret.fish). Move the pony with WASD like the true gamer I know you are.
+The app is hosted [here](https://pony.secret.fish). Move the pony with the arrows or WASD.
 
 ## Installation
 ```

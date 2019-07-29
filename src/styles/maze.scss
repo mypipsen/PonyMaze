@@ -1,25 +1,27 @@
 .maze {
-  min-width: 450px;
-  height: 750px;
-  border-right: 7px solid #fff;
-  border-bottom: 7px solid #fff;
+  width: 420px;
+  height: 700px;
+  border-right: 5px solid #4595bb;
+  border-bottom: 5px solid #4595bb;
   box-sizing: border-box;
+  background: #eefff9;
+  margin: 0 auto;
 
   .maze-row {
     display: flex;
 
     .maze-cell {
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       box-sizing: border-box;
       position: relative;
 
       &.north {
-        border-top: 7px solid #fff;
+        border-top: 5px solid #4595bb;
       }
 
       &.west {
-        border-left: 7px solid #fff;
+        border-left: 5px solid #4595bb;
       }
 
       &.object {
@@ -35,18 +37,21 @@
           background-image: url('../img/endpoint.png');
           background-repeat: no-repeat;
           background-size: 23px 23px;
+          background-position: center;
         }
 
         &__domokun {
           background-image: url('../img/domokun.png');
           background-repeat: no-repeat;
           background-size: 23px 23px;
+          background-position: center;
         }
 
         &__pony {
           background-image: url('../img/pony.png');
           background-repeat: no-repeat;
           background-size: 23px 23px;
+          background-position: center;
         }
       }
     }

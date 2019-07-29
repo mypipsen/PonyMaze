@@ -19,15 +19,19 @@ class Maze extends Component {
 
         switch (keyCode) {
             case 87: // W
+            case 38: // Up
                 direction = 'north';
                 break;
             case 65: // A
+            case 37: // Left
                 direction = 'west';
                 break;
             case 83: // S
+            case 40: // Down
                 direction = 'south';
                 break;
             case 68: // D
+            case 39: // Right
                 direction = 'east';
                 break;
             default:

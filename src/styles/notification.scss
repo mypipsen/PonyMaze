@@ -1,4 +1,8 @@
 .notification {
-  position: absolute; top: 0; right: 0;
-  z-index: 2;
+  font-weight: bold;
+  border: none;
+
+  .toast-header {
+    border: none;
+  }
 }
