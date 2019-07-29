@@ -9,15 +9,33 @@ const mapStateToProps = state => {
 
 class Maze extends Component {
 
-    componentDidMount() {
-        window.addEventListener('keyup', (e) => this.onKeyUp(e), false);
+    constructor(props) {
+        super(props);
+
+        this.onKeyDown = this.onKeyDown.bind(this);
     }
 
-    onKeyUp(e) {
-        const keyCode = e.keyCode;
+    componentDidMount() {
+        document.addEventListener('keydown', this.onKeyDown, false);
+    }
+
+    componentWillUnmount() {
+        document.addEventListener('keydown', this.onKeyDown, false);
+    }
+
+    onKeyDown(e) {
+        if (!this.props.maze) {
+            return;
+        }
+
+        // Prevent scrolling on arrow keys
+        if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+            e.preventDefault();
+        }
+
         let direction;
 
-        switch (keyCode) {
+        switch (e.keyCode) {
             case 87: // W
             case 38: // Up
                 direction = 'north';
