@@ -36,7 +36,7 @@ class MazeSelector extends Component {
 
         return (
             <div className="dropdown clickable">
-                <div className="btn btn-primary dropdown-toggle" onClick={() => this.toggle()}>Select an existing maze</div>
+                <div className="btn btn-primary dropdown-toggle" onClick={() => this.toggle()}>Select existing maze</div>
                 <div className={`dropdown-menu ${this.state.active ? 'show' : ''}`}>
                     {mazes.map((maze, i) => {
                         const active = this.props.maze && this.props.maze.maze_id === maze;

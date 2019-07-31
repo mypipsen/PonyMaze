@@ -3,6 +3,7 @@ import Notification from './Notification';
 import MazeSelector from './MazeSelector';
 import MazeCreation from './MazeCreation';
 import Maze from './Maze';
+import MazeSolver from "./MazeSolver";
 
 class App extends Component {
 
@@ -22,6 +23,9 @@ class App extends Component {
                             </div>
                             <div className="col-md-auto">
                                 <MazeSelector/>
+                            </div>
+                            <div className="col-md-auto">
+                                <MazeSolver/>
                             </div>
                         </div>
                         <div className="row mt-5">

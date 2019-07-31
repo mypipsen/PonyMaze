@@ -1,5 +1,6 @@
 import cookie from '../util/cookie';
 import ponyApi from '../api/ponyApi';
+import depthFirst from '../algorithms/depthFirst';
 import {
     FETCH_MAZES,
     FETCH_MAZE_SUCCESS,
@@ -8,6 +9,8 @@ import {
     CREATE_MAZE_FAILURE,
     MOVE_SUCCESS,
     MOVE_FAILURE,
+    SOLUTION_SUCCESS,
+    SOLUTION_FAILURE,
 } from './types';
 
 function getMazesFromCookie() {
@@ -79,6 +82,19 @@ export function movePony(id, direction) {
             .catch(err => {
                 dispatch({type: MOVE_FAILURE, payload: err.response.data});
                 dispatch(fetchMaze(id));
+            });
+    }
+}
+
+export function solveMaze(maze) {
+    return (dispatch) => {
+        depthFirst
+            .search(maze)
+            .then(path => {
+                dispatch({type: SOLUTION_SUCCESS, payload: path});
+            })
+            .catch(err => {
+                dispatch({type: SOLUTION_FAILURE, payload: err});
             });
     }
 }

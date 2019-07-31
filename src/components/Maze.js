@@ -4,7 +4,7 @@ import '../util/array';
 import {movePony} from '../redux/actions';
 
 const mapStateToProps = state => {
-    return {maze: state.maze};
+    return {maze: state.maze, solution: state.solution};
 };
 
 class Maze extends Component {
@@ -62,7 +62,7 @@ class Maze extends Component {
     }
 
     render() {
-        const {maze} = this.props;
+        const {maze, solution} = this.props;
 
         if (!maze) {
             return null;
@@ -84,9 +84,10 @@ class Maze extends Component {
                             {cells.map((cell, y) => {
                                 const key = i * width + y;
                                 const object = objectLocations[key] ? `object__${objectLocations[key]}` : '';
+                                const path = solution.indexOf(key) > -1 ? 'path' : '';
 
                                 return (
-                                    <div className={`maze-cell ${cell.join(' ')} ${object}`} key={key}/>
+                                    <div className={`maze-cell ${cell.join(' ')} ${object} ${path}`} key={key} />
                                 )
                             })}
                         </div>
