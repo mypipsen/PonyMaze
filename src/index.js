@@ -5,6 +5,8 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/store';
 import {Provider} from 'react-redux';
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
 
 ReactDOM.render(
     <Provider store={store}>
