@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/PonyMaze/static/css/main.2b7ba3a0.chunk.css",
+    "main.js": "/PonyMaze/static/js/main.af1cb294.chunk.js",
+    "main.js.map": "/PonyMaze/static/js/main.af1cb294.chunk.js.map",
+    "runtime~main.js": "/PonyMaze/static/js/runtime~main.2799de1a.js",
+    "runtime~main.js.map": "/PonyMaze/static/js/runtime~main.2799de1a.js.map",
+    "static/css/2.3ce71253.chunk.css": "/PonyMaze/static/css/2.3ce71253.chunk.css",
+    "static/js/2.c8fc97c9.chunk.js": "/PonyMaze/static/js/2.c8fc97c9.chunk.js",
+    "static/js/2.c8fc97c9.chunk.js.map": "/PonyMaze/static/js/2.c8fc97c9.chunk.js.map",
+    "index.html": "/PonyMaze/index.html",
+    "precache-manifest.fd7620bca3debc2cc07dde16d2541acc.js": "/PonyMaze/precache-manifest.fd7620bca3debc2cc07dde16d2541acc.js",
+    "service-worker.js": "/PonyMaze/service-worker.js",
+    "static/css/2.3ce71253.chunk.css.map": "/PonyMaze/static/css/2.3ce71253.chunk.css.map",
+    "static/css/main.2b7ba3a0.chunk.css.map": "/PonyMaze/static/css/main.2b7ba3a0.chunk.css.map",
+    "static/media/index.scss": "/PonyMaze/static/media/domokun.9e97ef2b.png"
+  }
+}
