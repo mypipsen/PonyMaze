@@ -3,7 +3,7 @@ A solution for [TrustPilot's Pony Challenge](https://ponychallenge.trustpilot.co
 Bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Using Redux, Axios, Sass and Bootstrap (for quick and easy styling). Styling is not responsive as the app is intended for desktop resolutions.
 
 ## How to play
-The app is hosted [here](https://pony.secret.fish). Move the pony with the arrow keys or WASD.
+The app is hosted [here](https://mypipsen.github.io/PonyMaze). Move the pony with the arrow keys or WASD.
 
 ## Algorithm
 The maze can be automatically solved by clicking the solve-button. This is implemented through a [depth-first search](https://en.wikipedia.org/wiki/Depth-first_search). However, the domokun is not accounted for in the suggested path. 
