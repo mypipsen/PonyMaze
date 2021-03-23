@@ -20,6 +20,6 @@ body {
   }
 }
 
-@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import 'maze';
 @import 'notification';
