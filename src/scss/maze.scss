@@ -1,0 +1,75 @@
+.maze {
+  width: 100%;
+  height: 100%;
+  max-width: 425px;
+  max-height: 700px;
+  border-right: 5px solid #4595bb;
+  border-bottom: 5px solid #4595bb;
+  box-sizing: border-box;
+  background: #eefff9;
+  margin: 0 auto;
+
+  &__row {
+    display: flex;
+  }
+
+  &__cell {
+    width: 28px;
+    height: 28px;
+    box-sizing: border-box;
+    position: relative;
+
+    &.north {
+      border-top: 5px solid #4595bb;
+    }
+
+    &.west {
+      border-left: 5px solid #4595bb;
+    }
+
+    &.object {
+      &::after {
+        position: absolute;
+        top: -2px;
+        text-align: center;
+        font-size: 1.2em;
+        z-index: 1;
+      }
+
+      &__end-point {
+        background-image: url('../img/endpoint.png');
+        background-repeat: no-repeat;
+        background-size: 23px 23px;
+        background-position: center;
+      }
+
+      &__domokun {
+        background-image: url('../img/domokun.png');
+        background-repeat: no-repeat;
+        background-size: 23px 23px;
+        background-position: center;
+      }
+
+      &__pony {
+        background-image: url('../img/pony.png');
+        background-repeat: no-repeat;
+        background-size: 23px 23px;
+        background-position: center;
+      }
+    }
+
+    &.path {
+      &::after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: rgba(0, 255, 0, 0.5);
+        top: 50%;
+        left: 50%;
+        margin-left: -5px;
+        margin-top: -5px;
+      }
+    }
+  }
+}
