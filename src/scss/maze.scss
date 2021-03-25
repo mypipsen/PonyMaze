@@ -1,6 +1,8 @@
 .maze {
-  width: 420px;
-  height: 700px;
+  width: 100%;
+  height: 100%;
+  max-width: 425px;
+  max-height: 700px;
   border-right: 5px solid #4595bb;
   border-bottom: 5px solid #4595bb;
   box-sizing: border-box;
