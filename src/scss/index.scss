@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  body {
+    background: linear-gradient(to left, #97dbf9, #4595bb);
+  }
+
+  h1 {
+    @apply text-4xl font-bold mb-4;
+  }
+
+  a {
+    @apply text-blue-500 hover:text-blue-700;
+  }
+
+  button {
+    @apply h-10 text-center px-4 py-0.5 text-sm font-medium rounded transition ease-in-out duration-150 cursor-pointer bg-blue-500 hover:bg-blue-700 text-white outline-none focus:outline-none;
+  }
+
+}
+
+@import 'maze';

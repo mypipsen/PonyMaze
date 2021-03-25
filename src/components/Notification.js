@@ -1,37 +1,27 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import { useContext } from 'react'
+import { observer } from 'mobx-react-lite'
+import StoreContext from 'support/contexts/StoreContext'
+import PonyService from 'support/services/PonyService'
 
-const mapStateToProps = state => {
-    return {error: state.error};
-};
+function Notification () {
 
-class Notification extends Component {
+  const store = useContext(StoreContext)
+  const { notification } = store
 
-    get className() {
-        if (this.props.error === 'You won. Game ended') {
-            return 'alert-success';
-        }
+  if (notification === null) {
+    return null
+  }
 
-        return 'alert-danger';
-    }
+  return (
+    <>
+      <div className={`p-4 rounded ${notification.error ? 'bg-red-300' : 'bg-green-200'}`}>
+        {notification.message}
+      </div>
 
-    render() {
-        const {error} = this.props;
+      {notification.img && <img src={PonyService.domain + notification.img} alt='You saved the pony!'/>}
+    </>
+  )
 
-        if (!error) {
-            return null;
-        }
-
-        return (
-            <div className="notification toast show">
-                <div className="toast-header text-center m-0 p-0">
-                    <div className={`alert m-0 ${this.className}`}>
-                        {error}
-                    </div>
-                </div>
-            </div>
-        )
-    }
 }
 
-export default connect(mapStateToProps)(Notification);
+export default observer(Notification)
