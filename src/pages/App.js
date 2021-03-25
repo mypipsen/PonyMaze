@@ -1,25 +1,31 @@
 import Introduction from 'components/Introduction'
 import Controls from 'components/Controls'
+import Notification from 'components/Notification'
 import Maze from 'components/Maze'
-import MazeContext from 'support/contexts/MazeContext'
-import useLocalStorage from 'support/hooks/use-local-storage'
+import StoreContext from 'support/contexts/StoreContext'
+import Store from 'support/data/Store'
+import FetchStoredMazeId from 'support/operations/FetchStoredMazeId'
 
-export default function App () {
+function App () {
 
-  const [mazeId, setMazeId] = useLocalStorage('maze_id')
+  const store = new Store()
 
   return (
-    <MazeContext.Provider value={{ mazeId, setMazeId }}>
+    <StoreContext.Provider value={store}>
+      <FetchStoredMazeId/>
       <div className='max-w-6xl	mx-auto bg-white p-12 mt-16 rounded-md flex space-x-12'>
-        <div className='w-1/2'>
+        <div className='w-1/2 space-y-4'>
           <Introduction/>
-          <Controls className='mt-4'/>
+          <Controls/>
+          <Notification/>
         </div>
         <div className='w-1/2'>
           <Maze/>
         </div>
       </div>
-    </MazeContext.Provider>
+    </StoreContext.Provider>
   )
 
 }
+
+export default App

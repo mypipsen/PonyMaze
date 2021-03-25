@@ -1,24 +1,16 @@
-import PropTypes from 'prop-types'
 import CreateMazeButton from 'components/partials/CreateMazeButton'
 import SolveMazeButton from 'components/partials/SolveMazeButton'
+import WhenMazeIsLoaded from 'support/conditionals/WhenMazeIsLoaded'
 
-function Controls (props) {
+export default function Controls () {
 
   return (
-    <div className={`${props.className} space-x-6`}>
+    <div className='space-x-6'>
       <CreateMazeButton/>
-      <SolveMazeButton/>
+      <WhenMazeIsLoaded>
+        <SolveMazeButton/>
+      </WhenMazeIsLoaded>
     </div>
   )
 
 }
-
-Controls.defaultProps = {
-  className: ''
-}
-
-Controls.propTypes = {
-  className: PropTypes.string,
-}
-
-export default Controls
