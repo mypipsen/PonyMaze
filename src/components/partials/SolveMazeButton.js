@@ -1,16 +1,22 @@
 import { useContext } from 'react'
-import MazeContext from 'support/contexts/MazeContext'
+import { observer } from 'mobx-react-lite'
+import StoreContext from 'support/contexts/StoreContext'
+import MazeSolver from 'support/services/MazeSolver'
 
-export default function SolveMazeButton () {
+function SolveMazeButton () {
 
-  const context = useContext(MazeContext)
+  const store = useContext(StoreContext)
 
-  if (context.mazeId === null) {
-    return null
+  function handleClick () {
+    MazeSolver.solve(store.maze)
+      .then(solution => store.setMazeSolution(solution))
+      .catch(err => store.setNotification({ message: err, error: true }))
   }
 
   return (
-    <button>Solve maze</button>
+    <button onClick={handleClick}>Solve maze</button>
   )
 
 }
+
+export default observer(SolveMazeButton)

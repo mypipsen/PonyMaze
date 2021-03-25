@@ -1,19 +1,14 @@
-import PropTypes from 'prop-types'
-import { useEffect } from 'react'
-import PonyService from '../../support/services/PonyService'
+import { useContext, useEffect, useCallback } from 'react'
+import { observer } from 'mobx-react-lite'
+import StoreContext from 'support/contexts/StoreContext'
+import PonyService from 'support/services/PonyService'
 
-function MovePony ({ maze, setMaze }) {
+function MovePony () {
 
-  useEffect(() => {
-    document.addEventListener('keydown', onKeyDown, false)
+  const store = useContext(StoreContext)
+  const { mazeId } = store
 
-    return () => {
-      document.removeEventListener('keydown', onKeyDown, false)
-    }
-  }, [maze])
-
-  function onKeyDown (e) {
-
+  const onKeyDown = useCallback((e) => {
     if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
       // Prevent scrolling on arrow keys
       e.preventDefault()
@@ -43,23 +38,35 @@ function MovePony ({ maze, setMaze }) {
     }
 
     if (direction) {
-      PonyService.move(maze.maze_id, direction)
-        .then(() => {
-          setMaze()
+      PonyService.move(mazeId, direction)
+        .then(data => {
+          if (data.state === 'won') {
+            return store.setNotification({ message: data['state-result'], error: false, img: data['hidden-url'] })
+          } else {
+            return store.setNotification(null)
+          }
         })
         .catch(err => {
-          console.error(err)
+          return store.setNotification({ message: err, error: true })
+        })
+        .finally(() => {
+          return PonyService.fetch(mazeId)
+            .then(maze => store.setMaze(maze))
+            .catch(err => store.setNotification({ message: err, error: true }))
         })
     }
-  }
+  }, [mazeId, store])
+
+  useEffect(() => {
+    document.addEventListener('keydown', onKeyDown, false)
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown, false)
+    }
+  }, [onKeyDown])
 
   return null
 
 }
 
-MovePony.propTypes = {
-  maze: PropTypes.object.isRequired,
-  setMaze: PropTypes.func.isRequired,
-}
-
-export default MovePony
+export default observer(MovePony)

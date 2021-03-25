@@ -1,13 +1,15 @@
-import React from 'react'
+import { useContext } from 'react'
+import { observer } from 'mobx-react-lite'
 import { chunk } from 'lodash'
-import PropTypes from 'prop-types'
-import MovePony from './MovePony'
+import StoreContext from 'support/contexts/StoreContext'
 
-function MazeRows ({ maze }) {
+function MazeRows () {
+
+  const store = useContext(StoreContext)
+  const { maze, mazeSolution } = store
 
   const width = maze.size[0]
   const rows = chunk(maze.data, width)
-  const solution = [] // TODO
 
   let objectLocations = {}
 
@@ -23,7 +25,7 @@ function MazeRows ({ maze }) {
 
             const key = i * width + y
             const object = objectLocations[key] ? `object__${objectLocations[key]}` : ''
-            const path = solution.indexOf(key) > -1 ? 'path' : ''
+            const path = mazeSolution.indexOf(key) > -1 ? 'path' : ''
 
             return (
               <div className={`maze__cell ${cell.join(' ')} ${object} ${path}`} key={key}/>
@@ -37,8 +39,4 @@ function MazeRows ({ maze }) {
 
 }
 
-MovePony.propTypes = {
-  maze: PropTypes.object.isRequired,
-}
-
-export default MazeRows
+export default observer(MazeRows)

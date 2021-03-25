@@ -3,7 +3,8 @@ import axios from 'axios/index'
 class PonyService {
 
   constructor () {
-    this.url = 'https://ponychallenge.trustpilot.com/pony-challenge'
+    this.domain = 'https://ponychallenge.trustpilot.com'
+    this.url = `${this.domain}/pony-challenge`
   }
 
   create (params) {
@@ -11,7 +12,7 @@ class PonyService {
       axios
         .post(`${this.url}/maze`, params)
         .then(response => resolve(response.data.maze_id))
-        .catch(err => reject(err))
+        .catch(err => reject(err.message))
     })
   }
 
@@ -20,7 +21,7 @@ class PonyService {
       axios
         .get(`${this.url}/maze/${id}`)
         .then(response => resolve(response.data))
-        .catch(err => reject(err))
+        .catch(err => reject(err.message))
     })
   }
 
@@ -30,8 +31,12 @@ class PonyService {
         .post(`${this.url}/maze/${id}`, { direction: direction })
         .then(response => {
 
-          if (response.status !== 200 || response.data['state-result'] !== 'Move accepted') {
-            return reject(response.data)
+          if (response.status !== 200) {
+            return reject(`Request failed with status code: ${response.status}`)
+          }
+
+          if (response.data.state === 'active' && response.data['state-result'] !== 'Move accepted') {
+            return reject(response.data['state-result'])
           }
 
           resolve(response.data)

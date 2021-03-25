@@ -1,10 +1,12 @@
 import { useContext } from 'react'
+import { observer } from 'mobx-react-lite'
+import StoreContext from 'support/contexts/StoreContext'
 import PonyService from 'support/services/PonyService'
-import MazeContext from 'support/contexts/MazeContext'
+import LocalStorage from 'support/services/LocalStorage'
 
-export default function CreateMazeButton () {
+function CreateMazeButton () {
 
-  const context = useContext(MazeContext)
+  const store = useContext(StoreContext)
 
   function handleClick () {
 
@@ -15,11 +17,10 @@ export default function CreateMazeButton () {
       'difficulty': Math.floor(Math.random() * 11)
     })
       .then(mazeId => {
-        context.setMazeId(mazeId)
+        store.setMazeId(mazeId)
+        LocalStorage.save('maze_id', mazeId)
       })
-      .catch(err => {
-        console.error(err)
-      })
+      .catch(err => store.setNotification({ message: err, error: true }))
 
   }
 
@@ -28,3 +29,5 @@ export default function CreateMazeButton () {
   )
 
 }
+
+export default observer(CreateMazeButton)
