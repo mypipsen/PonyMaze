@@ -30,12 +30,8 @@ class PonyService {
         .post(`${this.url}/maze/${id}`, { direction: direction })
         .then(response => {
 
-          if (response.status !== 200 || response.data['state-results'] !== 'Move accepted') {
-            return reject({
-              response: {
-                data: response.data['state-result']
-              }
-            })
+          if (response.status !== 200 || response.data['state-result'] !== 'Move accepted') {
+            return reject(response.data)
           }
 
           resolve(response.data)
