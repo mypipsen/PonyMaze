@@ -24,7 +24,7 @@ export default function CreateMazeButton () {
   }
 
   return (
-    <button onClick={handleClick}>Create new maze</button>
+    <button onClick={handleClick}>Create maze</button>
   )
 
 }
