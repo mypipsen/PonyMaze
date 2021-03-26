@@ -2,6 +2,7 @@ import FetchMaze from 'support/operations/FetchMaze'
 import WhenMazeIsLoaded from 'support/conditionals/WhenMazeIsLoaded'
 import MovePony from 'components/partials/MovePony'
 import MazeRows from 'components/partials/MazeRows'
+import Tutorial from 'components/Tutorial'
 
 export default function Maze () {
 
@@ -13,6 +14,7 @@ export default function Maze () {
           <MovePony/>
           <MazeRows/>
         </div>
+        <Tutorial/>
       </WhenMazeIsLoaded>
     </>
   )
