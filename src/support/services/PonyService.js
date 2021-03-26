@@ -35,7 +35,7 @@ class PonyService {
             return reject(`Request failed with status code: ${response.status}`)
           }
 
-          if (response.data.state === 'active' && response.data['state-result'] !== 'Move accepted') {
+          if (response.data.state === 'over' || response.data['state-result'] === 'Can\'t walk in there') {
             return reject(response.data['state-result'])
           }
 
