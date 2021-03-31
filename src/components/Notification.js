@@ -14,11 +14,11 @@ function Notification () {
 
   return (
     <>
-      <div className={`p-4 rounded ${notification.error ? 'bg-red-300' : 'bg-green-200'}`}>
+      <div className={`p-4 rounded dark:text-black ${notification.error ? 'bg-red-300' : 'bg-green-200'}`}>
         {notification.message}
       </div>
 
-      {notification.img && <img src={PonyService.domain + notification.img} alt='You saved the pony!'/>}
+      {notification.img && <img src={PonyService.domain + notification.img} alt='You saved the pony!' />}
     </>
   )
 

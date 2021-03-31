@@ -5,7 +5,7 @@
 @layer base {
 
   body {
-    background: linear-gradient(to left, #97dbf9, #4595bb);
+    @apply bg-blue-300 dark:bg-gray-900 dark:text-white;
   }
 
   h1 {
