@@ -21,7 +21,7 @@ export default function Tutorial () {
   ]
 
   return (
-    <Joyride steps={steps}/>
+    <Joyride steps={steps} />
   )
 
 }

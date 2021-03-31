@@ -13,18 +13,18 @@ function App () {
 
   return (
     <StoreContext.Provider value={store}>
-      <FetchStoredMazeId/>
+      <FetchStoredMazeId />
       <div className='max-w-6xl	mx-auto bg-white p-12 mt-16 rounded-md space-y-12 lg:flex lg:space-x-12 dark:bg-gray-800 relative'>
         <div className='absolute top-4 right-4'>
           <DarkModeToggler />
         </div>
         <div className='w-full lg:w-1/2 space-y-4'>
-          <Introduction/>
-          <Controls/>
-          <Notification/>
+          <Introduction />
+          <Controls />
+          <Notification />
         </div>
         <div className='w-full lg:w-1/2'>
-          <Maze/>
+          <Maze />
         </div>
       </div>
     </StoreContext.Provider>

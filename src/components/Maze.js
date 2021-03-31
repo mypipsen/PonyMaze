@@ -8,13 +8,13 @@ export default function Maze () {
 
   return (
     <>
-      <FetchMaze/>
+      <FetchMaze />
       <WhenMazeIsLoaded>
         <div className='maze'>
-          <MovePony/>
-          <MazeRows/>
+          <MovePony />
+          <MazeRows />
         </div>
-        <Tutorial/>
+        <Tutorial />
       </WhenMazeIsLoaded>
     </>
   )

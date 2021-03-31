@@ -20,7 +20,7 @@ function MazeRows () {
   return (
     <>
       {rows.map((cells, i) => (
-        <div className="maze__row" key={i}>
+        <div className='maze__row' key={i}>
           {cells.map((cell, y) => {
 
             const key = i * width + y
@@ -28,7 +28,7 @@ function MazeRows () {
             const path = mazeSolution.indexOf(key) > -1 ? 'path' : ''
 
             return (
-              <div className={`maze__cell ${cell.join(' ')} ${object} ${path}`} key={key}/>
+              <div className={`maze__cell ${cell.join(' ')} ${object} ${path}`} key={key} />
             )
 
           })}
