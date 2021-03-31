@@ -6,9 +6,9 @@ export default function Controls () {
 
   return (
     <div className='space-x-6'>
-      <CreateMazeButton/>
+      <CreateMazeButton />
       <WhenMazeIsLoaded>
-        <SolveMazeButton/>
+        <SolveMazeButton />
       </WhenMazeIsLoaded>
     </div>
   )
