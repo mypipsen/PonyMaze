@@ -11,7 +11,7 @@
     "lodash": "^4.17.21",
     "mobx": "^6.1.8",
     "mobx-react-lite": "^3.2.0",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.0",
     "postcss": "^7.0.35",
     "react": "^17.0.2",
     "react-app-polyfill": "^2.0.0",
