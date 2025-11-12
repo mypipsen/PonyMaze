@@ -1,5 +1,5 @@
 # Pony Maze
-A solution for [TrustPilot's Pony Challenge](https://ponychallenge.trustpilot.com/api-docs/index.html).
+A solution for [TrustPilot's Pony Challenge](https://ponychallenge.trustpilot.com/api-docs/index.html) (no longer used).
 Bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Using MobX, Axios and TailwindCSS. The app is intended for desktop resolutions.
 
 ## How to play
